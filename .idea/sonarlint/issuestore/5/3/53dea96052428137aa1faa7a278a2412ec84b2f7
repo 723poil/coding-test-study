@@ -1,0 +1,16 @@
+
+kpython:S117"MRename this parameter "C" to match the regular expression ^[_a-z][a-z0-9_]*$.(º•öŠ8äüĞæ1
+kpython:S117"MRename this parameter "R" to match the regular expression ^[_a-z][a-z0-9_]*$.(º•öŠ8äüĞæ1
+spython:S117"URename this parameter "islandMap" to match the regular expression ^[_a-z][a-z0-9_]*$.(º•öŠ8äüĞæ1
+zpython:S117"WRename this local variable "newMap" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨Ï”Üúÿÿÿÿ8åüĞæ1
+opython:S1542"PRename function "makeNewMap" to match the regular expression ^[a-z_][a-z0-9_]*$.(º•öŠ8åüĞæ1
+spython:S3776"TRefactor this function to reduce its Cognitive Complexity from 25 to the 15 allowed.(º•öŠ8åüĞæ1
+jpython:S117"MRename this parameter "C" to match the regular expression ^[_a-z][a-z0-9_]*$.(³ó‡d8åüĞæ1
+jpython:S117"MRename this parameter "R" to match the regular expression ^[_a-z][a-z0-9_]*$.(³ó‡d8åüĞæ1
+spython:S117"URename this local variable "maxX" to match the regular expression ^[_a-z][a-z0-9_]*$.(š÷×±8åüĞæ1
+spython:S117"URename this local variable "maxY" to match the regular expression ^[_a-z][a-z0-9_]*$.(š÷×±8åüĞæ1
+spython:S117"URename this local variable "minX" to match the regular expression ^[_a-z][a-z0-9_]*$.(š÷×±8åüĞæ1
+spython:S117"URename this local variable "minY" to match the regular expression ^[_a-z][a-z0-9_]*$.(š÷×±8åüĞæ1
+opython:S117"RRename this parameter "newMap" to match the regular expression ^[_a-z][a-z0-9_]*$.(³ó‡d8åüĞæ1
+tpython:S1542"VRename function "resizeCoordinate" to match the regular expression ^[a-z_][a-z0-9_]*$.(³ó‡d8åüĞæ1
+rpython:S3776"TRefactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.(³ó‡d8åüĞæ1
