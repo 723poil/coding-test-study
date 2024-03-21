@@ -1,0 +1,7 @@
+
+|python:S117"YRename this local variable "mainDiag" to match the regular expression ^[_a-z][a-z0-9_]*$.(üöÄ¦ùÿÿÿÿ8ƒôê‡æ1
+zpython:S117"WRename this local variable "midCol" to match the regular expression ^[_a-z][a-z0-9_]*$.(–Öþïÿÿÿÿÿ8„ôê‡æ1
+zpython:S117"WRename this local variable "midRow" to match the regular expression ^[_a-z][a-z0-9_]*$.(æ¦£‹ùÿÿÿÿ8„ôê‡æ1
+python:S117"\Rename this local variable "rotationCnt" to match the regular expression ^[_a-z][a-z0-9_]*$.(–õ‹‚ÿÿÿÿÿ8„ôê‡æ1
+vpython:S117"XRename this local variable "subDiag" to match the regular expression ^[_a-z][a-z0-9_]*$.(²œ«Í8„ôê‡æ1
+Bpython:S125"Remove this commented out code.(“òË—ùÿÿÿÿ8ŠÊî‡æ1
