@@ -1,5 +1,6 @@
 # solution 1은 list를 sort정렬로 정리해서 품 - 1053ms
 # solution 2는 Priority Queue를 사용해서 품 - 3330ms
+# solution 3은 heapq를 사용 - 1610ms
 
 
 # from sys import stdin
@@ -101,19 +102,124 @@
 # solution()
 
 ## solution 2
-from sys import stdin
-from queue import PriorityQueue
+# from sys import stdin
+# from queue import PriorityQueue
 
-commands = PriorityQueue()
+# commands = PriorityQueue()
+
+# cus_seat = dict()
+# cus_sushi = dict()
+# cus_time = dict()
+
+# def get_command(Q: int):
+#     global cus_seat, cus_sushi, cus_time
+
+#     command_t = []
+
+#     for _ in range(Q):
+#         name = ""
+#         n = -1
+#         x = -1
+
+#         command = list(map(str, input().rstrip().split()))
+
+#         c, t = [int(command[0]), int(command[1])]
+
+#         if c == 100:
+#             x, name = [int(command[2]), command[3]]
+
+#         elif c == 200:
+#             x, name, n = [int(command[2]), command[3], int(command[4])]
+        
+#             cus_seat[name] = x
+#             cus_sushi[name] = n
+#             cus_time[name] = t
+        
+#         command_t.append((c, t, x, name, n))
+    
+#     return command_t
+
+# def find_customer(command_t: list, L: int):
+#     global commands, cus_seat, cus_sushi, cus_time
+
+#     for command in command_t:
+#         if command[0] != 100:
+#             commands.put((command[1], command[0], command[3]))
+#             continue
+        
+#         commands.put((command[1], command[0]))
+
+#         sushi_t, sushi_x, sushi_name = [command[1], command[2], command[3]]
+
+#         c_t = cus_time[sushi_name]
+
+#         # 1. 사람이 스시 후에 들어올 때
+#         if sushi_t < c_t:
+#             gap_t = c_t - sushi_t
+
+
+#             expect_x = (gap_t + sushi_x) % L
+
+#             able_time = cus_seat[sushi_name] - expect_x
+#             if able_time < 0:
+#                 able_time += L
+            
+#             able_time += c_t
+
+#         # 2. 사람이 스시 전에 들어와 있을 때
+#         else:
+#             able_time = cus_seat[sushi_name] - sushi_x
+
+#             if able_time < 0:
+#                 able_time += L
+
+#             able_time += sushi_t
+
+#         commands.put((able_time, 101, sushi_name))
+
+# def solution():
+#     global commands, cus
+
+#     L, Q = map(int, input().split())
+
+#     command_t = get_command(Q)
+
+#     find_customer(command_t, L)
+
+#     sushi_cnt = 0
+#     cus_cnt = 0
+
+#     while not commands.empty():
+#         command = commands.get()
+
+#         if command[1] == 100:
+#             sushi_cnt += 1
+#         elif command[1] == 101:
+#             sushi_cnt -= 1
+
+#             cus_sushi[command[2]] -= 1
+
+#             if cus_sushi[command[2]] <= 0:
+#                 cus_cnt -= 1
+#         elif command[1] == 200:
+#             cus_cnt += 1
+#         else:
+#             print(cus_cnt, sushi_cnt)
+
+# solution()
+
+## solution 3
+from sys import stdin
+from heapq import heappush, heappop
+
+commands = []
 
 cus_seat = dict()
 cus_sushi = dict()
 cus_time = dict()
 
 def get_command(Q: int):
-    global cus_seat, cus_sushi, cus_time
-
-    command_t = []
+    global cus_seat, cus_sushi, cus_time, commands
 
     for _ in range(Q):
         name = ""
@@ -134,21 +240,18 @@ def get_command(Q: int):
             cus_sushi[name] = n
             cus_time[name] = t
         
-        command_t.append((c, t, x, name, n))
-    
-    return command_t
+        commands.append((t, c, x, name, n))
 
-def find_customer(command_t: list, L: int):
+def find_customer(L: int):
     global commands, cus_seat, cus_sushi, cus_time
 
-    for command in command_t:
-        if command[0] != 100:
-            commands.put((command[1], command[0], command[3]))
-            continue
-        
-        commands.put((command[1], command[0]))
+    t_command = []
 
-        sushi_t, sushi_x, sushi_name = [command[1], command[2], command[3]]
+    for command in commands:
+        if command[1] != 100:
+            continue
+
+        sushi_t, sushi_x, sushi_name = [command[0], command[2], command[3]]
 
         c_t = cus_time[sushi_name]
 
@@ -174,31 +277,34 @@ def find_customer(command_t: list, L: int):
 
             able_time += sushi_t
 
-        commands.put((able_time, 101, sushi_name))
+        t_command.append((able_time, 101, -1, sushi_name, -1))
+    
+    for c in t_command:
+        heappush(commands, c)
 
 def solution():
     global commands, cus
 
     L, Q = map(int, input().split())
 
-    command_t = get_command(Q)
+    get_command(Q)
 
-    find_customer(command_t, L)
+    find_customer(L)
 
     sushi_cnt = 0
     cus_cnt = 0
 
-    while not commands.empty():
-        command = commands.get()
+    while len(commands) != 0:
+        command = heappop(commands)
 
         if command[1] == 100:
             sushi_cnt += 1
         elif command[1] == 101:
             sushi_cnt -= 1
 
-            cus_sushi[command[2]] -= 1
+            cus_sushi[command[3]] -= 1
 
-            if cus_sushi[command[2]] <= 0:
+            if cus_sushi[command[3]] <= 0:
                 cus_cnt -= 1
         elif command[1] == 200:
             cus_cnt += 1
