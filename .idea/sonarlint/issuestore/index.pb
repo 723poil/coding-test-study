@@ -45,3 +45,7 @@ e
 5week2/02.일곱난쟁이/일곱난쟁이_김현지.py,2\0\201a1e336981f86cda69a71309abb4d3559ff191
 _
 /week2/03.바이러스/바이러스_김현지.py,b\0\b0f27dd15af25448fd35b633dc55182a61c14be4
+Z
+*week2/04.DFS와 BFS/DFS와BFS_김현지.py,5\5\55effe15d3e05ef6e7b6a757126e7205139d76dc
+[
++week2/04.DFS와 BFS/DFS와_BFS_이상협.py,6\0\60375e29300d750acca7ea41c90b98961e03c13d
