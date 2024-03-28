@@ -49,3 +49,9 @@ Z
 *week2/04.DFS와 BFS/DFS와BFS_김현지.py,5\5\55effe15d3e05ef6e7b6a757126e7205139d76dc
 [
 +week2/04.DFS와 BFS/DFS와_BFS_이상협.py,6\0\60375e29300d750acca7ea41c90b98961e03c13d
+g
+7week2/05.유기농 배추/유기농_배추_김현지.py,c\5\c5b0dd50ad75cd16e903636ef25dbf8379f58427
+g
+7week2/05.유기농 배추/유기농_배추_이상협.py,9\4\94ad6b38605a3099d790bdc5f7c7fa85b12f843b
+_
+/week2/03.바이러스/바이러스_강민지.py,7\f\7fec601be7468a92f4ce4b7e71b4c5044c0c09fe
