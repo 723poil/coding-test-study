@@ -39,85 +39,41 @@
 #     turned_mat[i][n+1//2] = main_diag[i]
     
 ########################################################################
-# 2번째 방식 => 여전히 틀림
+# 2번째 방식
 ########################################################################
 
-import sys
-input = sys.stdin.readline
+def rotate_matrix(n, d, matrix):
+    rotations = d // 45 % 8  # 회전 횟수 => 360도는 45도를 1회전으로 하면 8회전이므로 모듈러로 계산(정수론의 나머지 정리)
+    for _ in range(rotations):
+        # 임시 변수로 주 대각선, 중앙 열, 부 대각선, 중앙 행의 원소를 저장
+        main_diag = [matrix[i][i] for i in range(n)]
+        mid_col = [matrix[i][(n+1)//2-1] for i in range(n)]
+        sub_diag = [matrix[i][n-i-1] for i in range(n)]
+        mid_row = matrix[(n+1)//2-1][:]
 
-T = int(input().strip())
-final_mat = []
+        # 시계 방향으로 원소 이동
+        for i in range(n):
+            matrix[i][(n+1)//2-1] = main_diag[i]  # 주 대각선 -> 중앙 열
+            matrix[i][n-i-1] = mid_col[i]  # 중앙 열 -> 부 대각선
+            matrix[(n+1)//2-1][n-i-1] = sub_diag[i]  # 부 대각선 -> 중앙 행
+            matrix[i][i] = mid_row[i]  # 중앙 행 -> 주 대각선
 
-for i in range(T):
-    n, d = map(int, input().split())    
-    og_mat = [list(map(int, input().split())) for _ in range(n)]
-    turned_mat = [[0]*n for _ in range(n)]
+    return matrix
 
-    if d < 0:
-        d = 360 + d
-    
-    #어려웠던 부분 1
-    start = d // 45 - 1 # 0 ~ 7
-    
-    # example
-    # ['1 기준에서', ' ', '2', ' ', '3'],
-    # [' ', ' ', ' ', ' ', ' '],
-    # ['8', ' ', ' ', ' ', '4'],
-    # [' ', ' ', ' ', ' ', ' '],
-    # ['7', ' ', '6', ' ', '5']
+# 입력 받기
+T = int(input().strip())  # 테스트 케이스의 수
 
-    vector_list = [] # 원래 매트릭스의 주대각, 행, 부대각, 열 순서로 임시로 저장할 리스트
-    vector_list.append([og_mat[i][i] for i in range(n)]) # 주대각
-    vector_list.append([og_mat[n+1//2-1][i] for i in range(n)]) # 행
-    vector_list.append([og_mat[n-i-1][i] for i in range(n-1, -1, -1)]) #부대각성분 # 거꾸로 가기
-    vector_list.append([og_mat[i][n+1//2-1] for i in range(n)]) # 열
+for _ in range(T):
+    n, d = map(int, input().split())  # 배열의 크기 n과 회전 각도 d
+    matrix = [list(map(int, input().split())) for _ in range(n)]  # 초기 매트릭스
 
-    # b_i는 움직일 벡터, 그리고 그것이 처음 시작할 곳 = start
-    for vec_i in range(4):
-        # 어려웠던 부분 2
-        index = (vec_i + start) % 8  # 0 ~ 7
+    # 회전 실행
+    rotated_matrix = rotate_matrix(n, d, matrix)
 
-        if index == 0: # 45d
-            for i in range(n):
-                turned_mat[i][n+1//2-1] = vector_list[vec_i][i]
-        
-        elif index == 1: # 90
-            for i in range(n):
-                turned_mat[i][n-i-1] = vector_list[vec_i][i]
-        
-        elif index == 2: # 135
-            for i in range(n):
-                turned_mat[n+1//2-1][i] = vector_list[vec_i][i]
-        
-        elif index == 3: # 180
-            for i in range(n):
-                turned_mat[n-i-1][n-i-1] = vector_list[vec_i][i]
+    # 회전된 매트릭스 출력
+    for row in rotated_matrix:
+        print(*row)
 
-        elif index == 4: # 225
-            for i in range(n):
-                turned_mat[n-i-1][n+1//2-1] = vector_list[vec_i][i]
-        
-        elif index == 5: # 270
-            for i in range(n):
-                turned_mat[n+1//2-1][i] = vector_list[vec_i][i]
-        
-        elif index == 6: # 315
-            for i in range(n):
-                turned_mat[n+1//2-1][i] = vector_list[vec_i][i]
-        
-        else: #index == 7: # 360    
-            for i in range(n):
-                turned_mat[i][i] = vector_list[vec_i][i]
-            
-            
-    # 안 움직인 애들 처리
-    for i in range(n):
-        for j in range(n):
-            if turned_mat[i][j] == 0:
-                turned_mat[i][j] = og_mat[i][j]
-    
-    for tmp_idx in range(n):
-        final_mat.append(turned_mat[tmp_idx])
 
 for tmp_list in range(len(final_mat)):
     print(*tmp_list)
