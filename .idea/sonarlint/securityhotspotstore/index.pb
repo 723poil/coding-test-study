@@ -105,3 +105,7 @@ _
 +week2/04.DFS와 BFS/DFS와_BFS_이주연.py,5\d\5d3a76e30cd36cfffe3ef16d98958e242ca463c4
 N
 week2/07.미로탐색/.gitkeep,b\3\b33fe0b67d5b9798f692351a529a9eb7413dd2e5
+{
+Kweek2/09.벽 부수고 이동하기/벽_부수고_이동하기_김현지.py,2\4\24a75690b46fdfe784f77a19f279769b6fdea772
+�
+Rweek2/09.벽 부수고 이동하기/벽_부수고_이동하기_김현지_실패.py,6\2\62957b837382b8ccef25f8b93c470ab05a65cbbb
