@@ -1,6 +1,6 @@
 # 6주차 스터디(1~5주차 정리)
 |주차|난이도|문제|
-|------|---|----|---|
+|------|---|----|
 |[week1](../week1/)|골드  |[상어 초등학교](https://www.acmicpc.net/problem/21608)|
 |[week2](../week2/)|골드|[벽 부수고 이동하기](https://www.acmicpc.net/problem/2206)|
 |[week3](../week3/)|삼성 기출  |[루돌프의 반란](https://www.codetree.ai/training-field/frequent-problems/problems/rudolph-rebellion/description?page=1&pageSize=20)|
