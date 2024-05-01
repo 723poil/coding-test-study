@@ -9,34 +9,31 @@ n = int(input())
 cost_matrix = [list(map(int, input().split())) for _ in range(n)]
 inf = int(1e10)
 min_cost = inf
+visited = [False] * n
 
-def recursive(route=[], cost=0):
+def recursive(start_city, current_city, count, cost):
+    
     global min_cost
 
-    # ※빼먹은 부분: 가지치기※
+    # 가지치기
     if cost >= min_cost:
         return
 
-    if len(route) == n:
-        added_cost = cost_matrix[route[-1]][route[0]]
-        if added_cost > 0:
-            min_cost = min(min_cost, cost+added_cost)
-            return
+    # 종료 조건
+    if count == n and cost_matrix[current_city][start_city]:
+        min_cost = min(min_cost, cost+cost_matrix[current_city][start_city])
         return
     
     for i in range(n):
-        if len(route) == 0:
-            route.append(i)
-            recursive(route, 0)
-            route.pop()
-        else:
-            last_city = route[-1]
-            part_cost = cost_matrix[last_city][i]
-            if (i not in route) and (part_cost>0):
-                route.append(i)
-                recursive(route, cost+part_cost)
-                route.pop()
+        if not visited[i] and cost_matrix[current_city][i]:
+            visited[i] = True
+            recursive(start_city, i, count+1, cost+cost_matrix[current_city][i])
+            visited[i] = False # backtracking
 
-recursive()
+
+for curr in range(n):
+    visited[curr] = True
+    recursive(curr, curr, 1, 0)
+    visited[curr] = False
+
 print(min_cost)
-                
