@@ -1,0 +1,5 @@
+
+ppython:S117"MRename this parameter "M" to match the regular expression ^[_a-z][a-z0-9_]*$.(γγχόÿÿÿÿ8…ν£ϊς1
+ppython:S117"MRename this parameter "N" to match the regular expression ^[_a-z][a-z0-9_]*$.(γγχόÿÿÿÿ8†ν£ϊς1
+zpython:S117"\Rename this local variable "finalResult" to match the regular expression ^[_a-z][a-z0-9_]*$.(¤ί¥κ8†ν£ϊς1
+€python:S117"bRename this local variable "sortedFinalResult" to match the regular expression ^[_a-z][a-z0-9_]*$.(±¨¨«8Έφ¥ϊς1
