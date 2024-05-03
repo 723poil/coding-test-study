@@ -5,7 +5,6 @@
 # 중복체크 
 # 종료 조건 
 # 하부 함수 호출
-
 import sys
 
 def backtracking(n, proc_list):
@@ -30,6 +29,11 @@ def main(N,M):
     # n depth visited의 idx등이 헷갈렸던게 뎁스와 숫자가 일치해서 헷갈렷음
     backtracking(0, [])
     # n은 0번째 부터 시작하는 것으로 함(호출함수 부분에서 방문 처리 해주려고)
+    
+    #     for i in range(1, N+1):
+    #         # 자꾸 마지막에 [1],[2],[3],[4]가 들어감, 여기서 방문 처리를 안해줘서 그럼
+    #         # so, 방문처리해주던지 dfs를 1번만 불러서(초기값은 0에서 시작), bt함수 내에서 1~n지 하는 방법있음 
+    #         backtracking(i, [])
     return ans
 
 if __name__=="__main__":
