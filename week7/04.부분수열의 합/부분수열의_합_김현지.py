@@ -1,5 +1,4 @@
 def main(N, S, sequences):
-    visited = [False] * N
     cnt = 0
 
     def subSequence(idx, sum):
